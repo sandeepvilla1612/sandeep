@@ -1,6 +1,0 @@
-git config user.name "sandeepvilla1612"
-git config user.email "sandeepvilla09@gmail.com"
-git config alias.s "status"
-git config alias.lg "log --oneline --graph --all --decorate"
-git remote add origin https://github.com/sandeepvilla1612/sandeep.git
-git config --list
