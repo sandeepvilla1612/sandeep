@@ -5,7 +5,7 @@ pipeline {
         stage('Clone HTML Template') {
             steps {
                 echo 'Cloning website files from GitHub...'
-                git url: 'https://github.com/sandeepvilla1612/sandeep/git', branch: 'main'
+                git url: 'https://github.com/sandeepvilla1612/sandeep.git', branch: 'main'
             }
         }
 
