@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+	git 'https://github.com/sandeepvilla1612/sandeep.git'
+            }
+        }
+
+        stage('Deploy to Apache') {
+            steps {
+                script {
+                    sh 'sudo cp -r * /var/www/html/'
+                }
+            }
+        }
+    }
+}
+
