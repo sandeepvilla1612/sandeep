@@ -1,19 +1,27 @@
 pipeline {
     agent any
 
-   stage('Clone Repository') {
-    steps {
-        git branch: 'main', 
-            credentialsId: 'jeevan', 
-            url: 'https://github.com/sandeepvilla1612/sandeep.git'
-    }
-}
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        // Optional: remove this if not needed
+        /*
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', 
+                    credentialsId: 'jeevan', 
+                    url: 'https://github.com/sandeepvilla1612/sandeep.git'
+            }
+        }
+        */
 
         stage('Deploy to Apache') {
             steps {
-                script {
-                    sh 'sudo cp -r * /var/www/html/'
-                }
+                sh 'cp -r * /var/www/html/'
             }
         }
     }
