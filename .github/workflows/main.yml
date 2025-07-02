@@ -1,28 +1,17 @@
-pipeline {
-    agent any
+name: Deploy to Apache
 
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+on:
+  push:
+    branches:
+      - main  # or change to 'master' if needed
 
-        // Optional: remove this if not needed
-        /*
-        stage('Clone Repository') {
-            steps {
-                git branch: 'main', 
-                    credentialsId: 'jeevan', 
-                    url: 'https://github.com/sandeepvilla1612/sandeep.git'
-            }
-        }
-        */
+jobs:
+  deploy:
+    runs-on: self-hosted  # MUST be a self-hosted runner with Apache and permissions
 
-        stage('Deploy to Apache') {
-            steps {
-                sh 'cp -r * /var/www/html/'
-            }
-        }
-    }
-}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy files to Apache
+        run: sudo cp -r * /var/www/html/
