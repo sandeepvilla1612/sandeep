@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+    stages {
+        stage('Start Job-A') {
+            steps {
+                echo "Running Job-A..."
+            }
+        }
+
+        stage('Trigger Job-B') {
+            steps {
+                build job: 'Job-B'  // 👈 This triggers Job-B
+            }
+        }
+    }
+}
